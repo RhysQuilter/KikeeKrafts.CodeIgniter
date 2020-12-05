@@ -14,7 +14,7 @@
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Telephone</th>
-
+                <th>View Details</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +24,7 @@
                     <td><?php echo $customer->FirstName; ?></td>
                     <td><?php echo $customer->LastName; ?></td>
                     <td><?php echo $customer->PhoneNumber; ?></td>
+                    <td><a href="<?php echo site_url('customers/' . $customer->custNumber); ?>">View Details</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
