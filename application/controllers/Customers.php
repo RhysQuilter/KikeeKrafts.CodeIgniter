@@ -18,13 +18,6 @@ class Customers extends CI_Controller
 
         $this->load->view('CustomersView', $data);
     }
-    public function register()
-    {
-        $data["heading"] = "Customers";
-        $data["pageTitle"] = "Customers Page";
-
-        $this->load->view('CustomerRegisterView', $data);
-    }
     public function view($id = NULL)
     {
         $data['customer'] = $this->CustomerModel->getCustomer($id);
@@ -32,5 +25,13 @@ class Customers extends CI_Controller
         $data["pageTitle"] = "Customer Page";
 
         $this->load->view('CustomerView', $data);
+    }
+    //WIP
+    public function register()
+    {
+        $data["heading"] = "Customers";
+        $data["pageTitle"] = "Customers Page";
+
+        $this->load->view('CustomerRegisterView', $data);
     }
 }
