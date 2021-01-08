@@ -8,19 +8,21 @@ class Customers extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url_helper');
-        $this->load->model('CustomerModel');
+        $this->load->model('CustomerService');
     }
     public function index()
     {
-        $data["customers"] = $this->CustomerModel->getCustomers();
-        $data["heading"] = "Customers";
-        $data["pageTitle"] = "Customers Page";
+        $data = array(
+            "customers" => $this->CustomerService->getCustomers(),
+            "heading" => "Customers",
+            "pageTitle" => "Customers Page"
+        );
 
         $this->load->view('CustomersView', $data);
     }
-    public function view($id = NULL)
+    public function view($customerId = NULL)
     {
-        $data['customer'] = $this->CustomerModel->getCustomer($id);
+        $data['customer'] = $this->CustomerService->getCustomerById($customerId);
         $data["heading"] = "Customer";
         $data["pageTitle"] = "Customer Page";
 
