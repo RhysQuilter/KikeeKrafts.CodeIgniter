@@ -48,16 +48,6 @@ class ProductService extends CI_Model {
 
 
 
-	/* WRongly named */
-
-	function drilldown($prodCode) {
-		$this->db->select("prodCode,prodDescription,prodCategory,prodArtist,prodQtyInStock,prodBuyCost,prodSalePrice,prodPhoto,priceAlreadyDiscounted");
-		$this->db->from('product');
-		$this->db->where('prodCode', $prodCode);
-		$query = $this->db->get();
-		return $query->result();
-	}
-
 	function getProductByCode($code) {
 
 		$this->db->select("prodCode,prodDescription,prodCategory,prodArtist,prodQtyInStock,prodBuyCost,prodSalePrice,prodPhoto,priceAlreadyDiscounted");
