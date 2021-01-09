@@ -22,13 +22,51 @@ class Customers extends CI_Controller
     }
     public function view($customerId = NULL)
     {
-        $data['customer'] = $this->CustomerService->getCustomerById($customerId);
-        $data["heading"] = "Customer";
-        $data["pageTitle"] = "Customer Page";
+        $data = array(
+            "customer" => $this->CustomerService->getCustomerById($customerId),
+            "heading" => "Customer",
+            "pageTitle" => "Customer Page"
+        );
 
-        $this->load->view('CustomerView', $data);
+        $this->load->view("CustomerView", $data);
     }
-    //WIP
+    public function edit($customerId = NULL)
+    {
+        $data = array(
+            "customer" => $this->CustomerService->getCustomerById($customerId),
+            "heading" => "Customer",
+            "pageTitle" => "Customer Page"
+        );
+
+        $this->load->view("CustomerEditView", $data);
+    }
+    public function update($customerId = NULL)
+    {
+        //validate forms post data
+
+        
+        $customer = array(
+            "Id" => $customerId,
+            "FirstName" => $customerId //$this->post["firstname"];
+        );
+
+        $operationSuccessful = $this->CustomerService->updateCustomer($customer);
+
+        if ($operationSuccessful == true) {
+            $message = "Customer Saved";
+            $view = "CustomerView";
+        } else {
+            $message = "Error";
+            $view = "CustomerEditView";
+        }
+        $data = array(
+            "customer" => $this->CustomerService->getCustomerById($customerId),
+            "heading" => "Customer",
+            "pageTitle" => "Customer Page",
+            "message" => $message
+        );
+        $this->load->view($view, $data);
+    }
     public function register()
     {
         $data["heading"] = "Customers";
