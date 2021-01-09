@@ -24,7 +24,7 @@ class ProductService extends CI_Model {
 
 	function updateProduct($product) {
 		$this->db->where('Id',$product->Id);
-		return $this->db->update($this->table, product);
+		return $this->db->update($this->table, $product);
 	}
 
 	function record_count() {
@@ -46,8 +46,6 @@ class ProductService extends CI_Model {
 		return $query->result();
 	}
 
-
-
 	function getProductByCode($code) {
 
 		$this->db->select("prodCode,prodDescription,prodCategory,prodArtist,prodQtyInStock,prodBuyCost,prodSalePrice,prodPhoto,priceAlreadyDiscounted");
@@ -57,6 +55,4 @@ class ProductService extends CI_Model {
 		$query = $this->db->get();
 		return $query->result()[0];
 	}
-
 }
-
