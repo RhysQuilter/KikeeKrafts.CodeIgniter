@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <th>Edit Details</th>
-                <td><a href="<?php echo site_url('customeredit/' . $customer->Id); ?>">Edit Details</a></td>
+                <td><a href="<?php echo site_url('customers/edit/' . $customer->Id); ?>">Edit Details</a></td>
 
             </tr>
 
