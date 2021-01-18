@@ -1,5 +1,3 @@
-<h1><?php echo $heading; ?></h1>
-
 <table>
     <tbody>
         <tr>
@@ -23,8 +21,6 @@
         <tr>
             <th>Edit Details</th>
             <td><a href="<?php echo site_url('customers/edit/' . $customer->Id); ?>">Edit Details</a></td>
-
         </tr>
-
     </tbody>
 </table>
