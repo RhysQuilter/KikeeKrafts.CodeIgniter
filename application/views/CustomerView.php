@@ -1,41 +1,30 @@
-<html>
+<h1><?php echo $heading; ?></h1>
 
-<head>
-    <title><?php echo $pageTitle; ?></title>
-</head>
+<table>
+    <tbody>
+        <tr>
+            <th>Id:</th>
+            <td><?php echo $customer->Id; ?></td>
+        </tr>
+        <tr>
+            <th>First Name:</th>
+            <td><?php echo $customer->FirstName; ?></td>
+        </tr>
+        <tr>
+            <th>Last Name:</th>
+            <td><?php echo $customer->LastName; ?></td>
 
-<body>
-    <h1><?php echo $heading; ?></h1>
+        </tr>
+        <tr>
+            <th>Phone Number:</th>
+            <td><?php echo $customer->PhoneNumber; ?></td>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id:</th>
-                <td><?php echo $customer->Id; ?></td>
-            </tr>
-            <tr>
-                <th>First Name:</th>
-                <td><?php echo $customer->FirstName; ?></td>
-            </tr>
-            <tr>
-                <th>Last Name:</th>
-                <td><?php echo $customer->LastName; ?></td>
+        </tr>
+        <tr>
+            <th>Edit Details</th>
+            <td><a href="<?php echo site_url('customers/edit/' . $customer->Id); ?>">Edit Details</a></td>
 
-            </tr>
-            <tr>
-                <th>Phone Number:</th>
-                <td><?php echo $customer->PhoneNumber; ?></td>
+        </tr>
 
-            </tr>
-            <tr>
-                <th>Edit Details</th>
-                <td><a href="<?php echo site_url('customers/edit/' . $customer->Id); ?>">Edit Details</a></td>
-
-            </tr>
-
-        </tbody>
-    </table>
-
-</body>
-
-</html>
+    </tbody>
+</table>

@@ -18,7 +18,14 @@ class Customers extends CI_Controller
             "pageTitle" => "Customers Page"
         );
 
-        $this->load->view('CustomersView', $data);
+        $masterPageData = array(
+            'pageTitle' => "Customers",
+            'mainContent' =>$this->load->view("CustomersView", $data, true),
+            'mainHeading' =>"Customers"
+        );
+
+
+        $this->load->view("index", $masterPageData);
     }
     public function view($customerId = NULL)
     {
@@ -28,7 +35,16 @@ class Customers extends CI_Controller
             "pageTitle" => "Customer Page"
         );
 
-        $this->load->view("CustomerView", $data);
+        $masterPageData = array(
+            'pageTitle' => "Customers",
+            'mainContent' =>$this->load->view("CustomerView", $data, true),
+            'mainHeading' =>"Customers"
+        );
+
+
+        $this->load->view("index", $masterPageData);
+
+        
     }
     public function edit($customerId = NULL)
     {
