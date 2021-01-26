@@ -14,7 +14,7 @@ $this->load->helper("url");
 <body>
 	<main class="form-signin">
 		<form action="<?php echo base_url(); ?>index.php/login/manage/" method="post">
-			<img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+                    <img src="/assets/images/site/logo.png" alt="" width="72" height="57">
 			<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
 			<label class="visually-hidden" for="inputEmail">Email</label>
