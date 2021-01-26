@@ -1,58 +1,52 @@
 <?php
 
-if (!defined('BASEPATH'))
-	exit('No direct script access allowed');
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class ProductService extends CI_Model {
-
+class ProductService extends CI_Model
+{
 	protected $table = "Product";
 
-	function __construct() {
-		//parent::__construct();
+	function __construct()
+	{
 		$this->load->database();
 	}
-
-	function addProduct($product) {
-		$this->db->insert($this->table, $product);
+	function addProduct($productValuesArray)
+	{
+		$this->db->insert($this->table, $productValuesArray);
 		return $this->db->affected_rows() == 1;
 	}
-
-	function deleteProductById($productId) {
+	function deleteProductById($productId)
+	{
 		$this->db->where('Id', $productId);
 		return $this->db->delete($this->table);
 	}
-
-	function updateProduct($product) {
-		$this->db->where('Id',$product->Id);
-		return $this->db->update($this->table, $product);
+	function getProductById($id)
+	{
+		$this->db->from($this->table);
+		$this->db->where('Id', $id);
+		$query = $this->db->get();
+		return $query->result()[0];
 	}
-
-	function record_count() {
-		return $this->db->count_all('product');
+	function getProductCount()
+	{
+		return $this->db->count_all($this->table);
 	}
-
-	/* function get_all_product() {
-	  $this->db->select("prodCode,FirstName,LastName,YearBorn,Image");
-	  $this->db->from('product');
-	  $query = $this->db->get();
-	  return $query->result();
-	  } */
-
-	function get_all_product($limit, $offset) {
+	function getProductRange($limit, $offset)
+	{
 		$this->db->limit($limit, $offset);
-		$this->db->select("prodCode,prodDescription,prodCategory,prodArtist,prodQtyInStock,prodBuyCost,prodSalePrice,priceAlreadyDiscounted,prodPhoto");
-		$this->db->from('product');
+		$this->db->from($this->table);
 		$query = $this->db->get();
 		return $query->result();
 	}
-
-	function getProductByCode($code) {
-
-		$this->db->select("prodCode,prodDescription,prodCategory,prodArtist,prodQtyInStock,prodBuyCost,prodSalePrice,prodPhoto,priceAlreadyDiscounted");
-		$this->db->from('product');
-		$this->db->where('prodCode', $code);
-
+	function getProducts()
+	{
+		$this->db->from($this->table);
 		$query = $this->db->get();
-		return $query->result()[0];
+		return $query->result();
+	}
+	function updateProduct($productValuesArray)
+	{
+		$this->db->where('Id', $productValuesArray["Id"]);
+		return $this->db->update($this->table, $productValuesArray);
 	}
 }
