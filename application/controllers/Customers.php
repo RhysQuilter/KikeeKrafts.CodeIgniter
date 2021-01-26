@@ -20,8 +20,8 @@ class Customers extends CI_Controller
 
         $masterPageData = array(
             'pageTitle' => "Customers",
-            'mainContent' =>$this->load->view("CustomersView", $data, true),
-            'mainHeading' =>"Customers"
+            'mainContent' => $this->load->view("CustomersView", $data, true),
+            'mainHeading' => "Customers"
         );
 
 
@@ -37,14 +37,12 @@ class Customers extends CI_Controller
 
         $masterPageData = array(
             'pageTitle' => "Customers",
-            'mainContent' =>$this->load->view("CustomerView", $data, true),
-            'mainHeading' =>"Customers"
+            'mainContent' => $this->load->view("CustomerView", $data, true),
+            'mainHeading' => "Customers"
         );
 
 
         $this->load->view("index", $masterPageData);
-
-        
     }
     public function edit($customerId = NULL)
     {
@@ -60,7 +58,7 @@ class Customers extends CI_Controller
     {
         //validate forms post data
 
-        
+
         $customer = array(
             "Id" => $customerId,
             "FirstName" => $customerId //$this->post["firstname"];

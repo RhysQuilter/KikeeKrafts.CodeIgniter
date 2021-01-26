@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>#</th>
@@ -15,7 +15,8 @@
                 <td><?php echo $customer->FirstName; ?></td>
                 <td><?php echo $customer->LastName; ?></td>
                 <td><?php echo $customer->PhoneNumber; ?></td>
-                <td><a href="<?php echo site_url('customers/view/' . $customer->Id); ?>">View Details</a></td>
+                <td><a class="btn btn-primary" href="<?php echo site_url('customers/view/' . $customer->Id); ?>
+                                                                            " role="button">view Details</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

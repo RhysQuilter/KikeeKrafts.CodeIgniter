@@ -1,4 +1,4 @@
-<table>
+<table class="table table-striped"
     <tbody>
         <tr>
             <th>Id:</th>
@@ -20,7 +20,8 @@
         </tr>
         <tr>
             <th>Edit Details</th>
-            <td><a href="<?php echo site_url('customers/edit/' . $customer->Id); ?>">Edit Details</a></td>
+           <td><a class="btn btn-primary" href="<?php echo site_url('customers/edit/' . $customer->Id); ?>
+                                                                            " role="button">view Details</a></td>
         </tr>
     </tbody>
 </table>

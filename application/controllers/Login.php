@@ -3,10 +3,11 @@
 defined('BASEPATH') || exit('No direct script access allowed');
 
 class Login extends CI_Controller
-{  
+{
 	public function index()
 	{
-		$this->load->view("LoginView");
+		$this->getMasterPage("LoginView", "Login", "Login");
+
 	}
 	public function manage()
 	{
@@ -33,7 +34,18 @@ class Login extends CI_Controller
 			var_dump(
 				hash("ripemd160", "password")
 			);
-			$this->load->view("LoginView", $vars);
+			$this->getMasterPage("LoginView", "Login", "Login", $vars);
 		}
+	}
+	private function getMasterPage($pageName, $pageTitle, $mainHeading, $pageVars = null)
+	{
+		$vars = array(
+			'pageTitle' => $pageTitle,
+			'mainContent' => $this->load->view($pageName, $pageVars, true),
+			'mainHeading' => $mainHeading
+		);
+
+
+		$this->load->view("index", $vars);
 	}
 }
