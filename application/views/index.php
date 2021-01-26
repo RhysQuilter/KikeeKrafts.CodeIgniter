@@ -41,10 +41,10 @@ $img_base = base_url() . "assets/images/";
             <a class="nav-link" href="<?php echo site_url('shoppingcart/'); ?>">Cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('wishlist/'); ?>">Cart</a>
+            <a class="nav-link" href="<?php echo site_url('wishlist/'); ?>">Wishlist</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('orders/'); ?>">Cart</a>
+            <a class="nav-link" href="<?php echo site_url('orders/'); ?>">Orders</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() . "index.php/login"; ?>">Login</a>

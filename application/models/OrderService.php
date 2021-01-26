@@ -18,6 +18,18 @@ class OrderService extends CI_Model
         return $this->db->affected_rows() == 1;
     }
 
+    function getOrderCount()
+	{
+		return $this->db->count_all($this->tableName);
+	}
+	function getOrderRange($limit, $offset)
+	{
+		$this->db->limit($limit, $offset);
+		$this->db->from($this->tableName);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 
     public function getOrders()
     {
@@ -47,8 +59,4 @@ class OrderService extends CI_Model
         return $this->db->update($this->tableName, $orderValuesArray);
     }
 
-    function getOrderCount()
-    {
-        return $this->db->count_all($this->tableName);
-    }
 }
