@@ -21,7 +21,8 @@ class Customers extends CI_Controller
         $masterPageData = array(
             'pageTitle' => "Customers",
             'mainContent' => $this->load->view("CustomersView", $data, true),
-            'mainHeading' => "Customers"
+            'mainHeading' => "Customers",
+			'loggedIn' => isset($this->session->userdata["UserAccountId"])
         );
 
 

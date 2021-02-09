@@ -27,7 +27,7 @@ class Products extends CI_Controller
 			'per_page' => 2
 		);
 		$this->pagination->initialize($paginationConfig);
-		$data['products'] = $this->ProductService->getProductRange(2, $this->uri->segment(3));
+		$data['products'] = $this->ProductService->getProductRange(5, $this->uri->segment(3));
 
 		$this->getMasterPage("productListView", "Products", "Products", $data);
 	}
@@ -61,7 +61,8 @@ class Products extends CI_Controller
 		$vars = array(
 			'pageTitle' => $pageTitle,
 			'mainContent' => $this->load->view($pageName, $pageVars, true),
-			'mainHeading' => $mainHeading
+			'mainHeading' => $mainHeading,
+			'loggedIn' => isset($this->session->userdata["UserAccountId"])
 		);
 
 

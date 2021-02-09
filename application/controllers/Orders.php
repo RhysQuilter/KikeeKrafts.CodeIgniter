@@ -50,7 +50,8 @@ class Orders extends CI_Controller
 		$vars = array(
 			'pageTitle' => $pageTitle,
 			'mainContent' => $this->load->view($pageName, $pageVars, true),
-			'mainHeading' => $mainHeading
+			'mainHeading' => $mainHeading,
+			'loggedIn' => isset($this->session->userdata["UserAccountId"])
 		);
 
 

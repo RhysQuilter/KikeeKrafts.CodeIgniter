@@ -1,6 +1,6 @@
 <?php echo form_open('path/to/controller/update/method'); ?>
 
-<table cellpadding="6" cellspacing="1" style="width:100%" border="0">
+<table  align ="center">
 
 <tr>
         <th>QTY</th>
@@ -48,5 +48,4 @@
 </tr>
 
 </table>
-
-<p><?php echo form_submit('', 'Update your Cart'); ?></p>
+<button type="submit" class="btn btn-primary">Checkout</button>
