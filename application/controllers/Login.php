@@ -22,8 +22,13 @@ class Login extends CI_Controller
 
 		$userAccount = $this->CustomerService->getCustomerByCredentials($email, $password);
 
+		//var_dump($userAccount);
 		if ($userAccount != null) {
 			$this->session->set_userdata("UserAccountId", $userAccount->Id);
+			$this->session->set_userdata("Username", $userAccount->Email);
+			//var_dump($this->session->userdata);
+			//var_dump(isset($this->session->userdata["UserAccountId"]));
+			//var_dump(($this->session->userdata["UserAccountId"]));
 			redirect(site_url("customers/"));
 		} else {
 			$vars = array(

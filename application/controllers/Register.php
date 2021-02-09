@@ -23,10 +23,10 @@ class Register extends CI_Controller
 
 		if ($password != $confirmPassword) {
 			$vars = array(
-				"error" => "Passwords do not match"
+				"error" => "Passwords do not match."
 			);
 			$this->getMasterPage("RegisterView", "Register", "Register", $vars);
-			return ;
+			return;
 			//TODO goto register with errormsg
 		}
 
@@ -40,7 +40,7 @@ class Register extends CI_Controller
 		);
 
 
-		$userAccount = $this->CustomerService->addCustomer($customerValuesArray);
+		$this->CustomerService->addCustomer($customerValuesArray);
 
 		if (true) {
 			redirect(site_url("login/"));
@@ -57,7 +57,7 @@ class Register extends CI_Controller
 			'pageTitle' => $pageTitle,
 			'mainContent' => $this->load->view($pageName, $pageVars, true),
 			'mainHeading' => $mainHeading,
-			'loggedIn' => isset($this->session->userdata["UserAccountId"])
+			'loggedIn' => isset($this->session->userdata["UserAccountId"]) ? true : false
 		);
 		$this->load->view("index", $vars);
 	}
