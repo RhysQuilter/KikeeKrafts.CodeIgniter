@@ -7,7 +7,6 @@ class Login extends CI_Controller
 	public function index()
 	{
 		$this->getMasterPage("LoginView", "Login", "Login");
-
 	}
 	public function manage()
 	{
@@ -25,14 +24,11 @@ class Login extends CI_Controller
 
 		if ($userAccount != null) {
 			$this->session->set_userdata("UserAccountId", $userAccount->Id);
-			redirect(base_url() . "index.php/customers/");
+			redirect(site_url("customers/"));
 		} else {
 			$vars = array(
 				"error" => "Incorrect login details entered",
 				"username" => $email
-			);
-			var_dump(
-				hash("ripemd160", "password")
 			);
 			$this->getMasterPage("LoginView", "Login", "Login", $vars);
 		}
@@ -42,7 +38,8 @@ class Login extends CI_Controller
 		$vars = array(
 			'pageTitle' => $pageTitle,
 			'mainContent' => $this->load->view($pageName, $pageVars, true),
-			'mainHeading' => $mainHeading
+			'mainHeading' => $mainHeading,
+			'loggedIn' => isset($this->session->userdata["UserAccountId"])
 		);
 
 

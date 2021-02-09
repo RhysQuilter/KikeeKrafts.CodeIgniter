@@ -46,9 +46,18 @@ $img_base = base_url() . "assets/images/";
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('orders/'); ?>">Orders</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url() . "index.php/login"; ?>">Login</a>
-          </li>
+          <?php if(isset($loggedIn) && $loggedIn == true) {  ?>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("logout/"); ?>">Logout</a>
+            </li>
+          <?php } else {  ?>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("login/"); ?>">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("register"); ?>">Register</a>
+            </li>
+          <?php } ?>
         </ul>
       </div>
     </div>
