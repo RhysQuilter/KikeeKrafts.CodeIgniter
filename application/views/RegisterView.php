@@ -18,6 +18,36 @@
                 <th>Phone Number:</th>
                 <td><input autofocus class="form-control" id="PhoneNumber" name="PhoneNumber" placeholder="Phone Number" required type="telephone"></td>
             </tr>
+
+            <tr>
+                <th>Address Line 1:</th>
+                <td><input autofocus class="form-control" id="AddressLine1" name="AddressLine1" placeholder="Address Line 1" required type="text"></td>
+            </tr>
+
+
+            <tr>
+                <th>Address Line 2:</th>
+                <td><input autofocus class="form-control" id="AddressLine2" name="AddressLine2" placeholder="Address Line 2" required type="text"></td>
+            </tr>
+
+
+            <tr>
+                <th>Address City:</th>
+                <td><input autofocus class="form-control" id="AddressCity" name="AddressCity" placeholder="Address City" required type="text"></td>
+            </tr>
+
+
+            <tr>
+                <th>Address Postal Code:</th>
+                <td><input autofocus class="form-control" id="AddressPostalCode" name="AddressPostalCode" placeholder="Address Postal Code" required type="text"></td>
+            </tr>
+
+            <tr>
+                <th>Address Country:</th>
+                <td><input autofocus class="form-control" id="AddressCountry" name="AddressCountry" placeholder="Address Country" required type="text"></td>
+            </tr>
+
+            
             <tr>
                 <th>Password:</th>
                 <td><input autofocus class="form-control" id="Password" name="Password" placeholder="Password" required type="password"></td>

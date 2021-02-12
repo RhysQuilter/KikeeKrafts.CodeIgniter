@@ -35,8 +35,12 @@ class Register extends CI_Controller
 			"FirstName" => $this->input->post("FirstName"),
 			"LastName" => $this->input->post("LastName"),
 			"Password" => $this->input->post("Password"),
-			"PhoneNumber" => $this->input->post("PhoneNumber")
-			//TODO: add other fields
+			"PhoneNumber" => $this->input->post("PhoneNumber"),
+			"AddressLine1" => $this->input->post("AddressLine1"),
+			"AddressLine2" => $this->input->post("AddressLine2"),
+			"AddressCity" => $this->input->post("AddressCity"),
+			"AddressPostalCode" => $this->input->post("AddressPostalCode"),
+			"AddressCountry" => $this->input->post("AddressCountry")
 		);
 
 
