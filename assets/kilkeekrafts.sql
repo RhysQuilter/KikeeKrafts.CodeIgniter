@@ -218,3 +218,23 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-12-05 21:17:38
+
+DELIMITER $$
+USE `kilkeekrafts`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetProductsInWishListByCustomer`(in $customerNumber int)
+BEGIN  
+SELECT `product`.`Id`,
+    `product`.`Description`,
+    `product`.`Category`,
+    `product`.`Artist`,
+    `product`.`StockQuantity`,
+    `product`.`BuyCost` ,
+    `product`.`SalePrice`,
+    `product`.`Photo`,
+    `product`.`PriceDiscounted`
+FROM `kilkeekrafts`.`product` inner join `kilkeekrafts`.`wishlistitem` ON `product`.`Id` = `wishlistitem`.`ProductId`
+WHERE `wishlistitem`.`CustomerNumber`= $customerNumber;
+END$$
+
+DELIMITER ;
+;
