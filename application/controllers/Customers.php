@@ -22,7 +22,7 @@ class Customers extends CI_Controller
             'pageTitle' => "Customers",
             'mainContent' => $this->load->view("CustomersView", $data, true),
             'mainHeading' => "Customers",
-			'loggedIn' => isset($this->session->userdata["UserAccountId"])
+			'loggedIn' => $this->session->userdata["UserAccountId"] !== null
         );
 
 

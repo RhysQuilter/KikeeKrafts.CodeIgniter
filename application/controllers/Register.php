@@ -61,8 +61,23 @@ class Register extends CI_Controller
 			'pageTitle' => $pageTitle,
 			'mainContent' => $this->load->view($pageName, $pageVars, true),
 			'mainHeading' => $mainHeading,
-			'loggedIn' => isset($this->session->userdata["UserAccountId"]) ? true : false
+			"username" => $this->getSessionUsername(),
+			'loggedIn' => $this->isLoggedIn()
 		);
+
+
 		$this->load->view("index", $vars);
+	}
+	private function getSessionUsername()
+	{
+		if (isset($this->session->userdata["Username"]))
+			return $this->session->userdata["Username"];
+		else return "";
+	}
+	private function isLoggedIn()
+	{
+		if (isset($this->session->userdata["UserAccountId"]))
+			return true;
+		else return false;
 	}
 }

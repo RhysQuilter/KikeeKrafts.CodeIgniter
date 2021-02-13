@@ -24,6 +24,7 @@
 
 		<?php foreach ($orders as $order) { ?>
 			<tr>
+			<!-- TODO Properties are wrong names, fix-->
 				<td><?php echo $order->Id; ?></td>
 				<td><?php echo $order->Description; ?></td>
 				<td><?php echo $order->Category; ?></td>

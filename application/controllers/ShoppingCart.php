@@ -20,19 +20,31 @@ class ShoppingCart extends CI_Controller
     }
 
 
+	private function getMasterPage($pageName, $pageTitle, $mainHeading, $pageVars = null)
+	{
+		$vars = array(
+			'pageTitle' => $pageTitle,
+			'mainContent' => $this->load->view($pageName, $pageVars, true),
+			'mainHeading' => $mainHeading,
+			"username" => $this->getSessionUsername(),
+			'loggedIn' => $this->isLoggedIn()
+		);
 
-    private function getMasterPage($pageName, $pageTitle, $mainHeading, $pageVars = null)
-    {
-        $vars = array(
-            'pageTitle' => $pageTitle,
-            'mainContent' => $this->load->view($pageName, $pageVars, true),
-            'mainHeading' => $mainHeading,
-			'loggedIn' => isset($this->session->userdata["UserAccountId"])
-        );
 
-
-        $this->load->view("index", $vars);
-    }
+		$this->load->view("index", $vars);
+	}
+	private function getSessionUsername()
+	{
+		if (isset($this->session->userdata["Username"]))
+			return $this->session->userdata["Username"];
+		else return "";
+	}
+	private function isLoggedIn()
+	{
+		if (isset($this->session->userdata["UserAccountId"]))
+			return true;
+		else return false;
+	}
 
     public function addProductToCart($productId)
     {

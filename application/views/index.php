@@ -20,6 +20,9 @@ $img_base = base_url() . "assets/images/";
     <h1><a href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/images/site/logo.png" alt="logo" style="width:100px;height:100px;"></a>Kilkee Krafts</h1>
   </header>
   <!-- TODO Display usename-->
+  <?php if (isset($loggedIn) && $loggedIn == true) {  ?>
+    <div>Logged in as: <?php echo $username?></div>
+  <?php } ?>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +50,7 @@ $img_base = base_url() . "assets/images/";
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('orders/'); ?>">Orders</a>
           </li>
-          <?php if(isset($loggedIn) && $loggedIn == true) {  ?>
+          <?php if (isset($loggedIn) && $loggedIn == true) {  ?>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("logout/"); ?>">Logout</a>
             </li>

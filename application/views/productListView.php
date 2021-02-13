@@ -33,23 +33,18 @@
 				<td><?php echo $product->SalePrice; ?></td>
 				<td><?php echo $product->PriceDiscounted; ?></td>
 				<td><img src="<?php echo base_url() . "assets/images/products/" . 'thumbs/' . $product->Photo; ?>"></td>
-				<td><a class="btn btn-primary"<?php echo anchor('Products/viewproduct/' . $product->Id, 'View'); ?></td>
-				<td><a class="btn btn-success""<?php echo anchor('shoppingcart/addProductToCart/' . $product->Id, 'Add to Cart'); ?></td>
-				<td><a class="btn btn-primary"<?php echo anchor('Products/editproduct/' . $product->Id, 'Update'); ?></td>
-				<td><a class="btn btn-danger""<?php echo anchor(
-						'Products/deleteproduct/' . $product->Id,
-						'Delete',
-						'onclick="return checkDelete()"'
-					); ?></td>
+				<td><?php echo anchor('products/viewproduct/' . $product->Id, 'View', 'class="btn btn-primary"'); ?></td>
+				<td><?php echo anchor('shoppingcart/addProductToCart/' . $product->Id, 'Add to Cart', 'class="btn btn-success"'); ?></td>
+				<td><?php echo anchor('products/editproduct/' . $product->Id, 'Update', 'class="btn btn-primary"'); ?></td>
+				<td><?php echo anchor('products/deleteproduct/' . $product->Id, 'Delete', 'onclick="return checkDelete()" class="btn btn-danger"'); ?></td>
 			</tr>
 		<?php } ?>
 	</table>
 	<ul class="pagination">
-  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-  <li class="page-item"><a class="page-link" href="#">1</a></li>
-  <li class="page-item"><a class="page-link" href="#">2</a></li>
-  <li class="page-item"><a class="page-link" href="#">3</a></li>
-  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-</ul>
-	<br><br>
+		<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+		<li class="page-item"><a class="page-link" href="#">1</a></li>
+		<li class="page-item"><a class="page-link" href="#">2</a></li>
+		<li class="page-item"><a class="page-link" href="#">3</a></li>
+		<li class="page-item"><a class="page-link" href="#">Next</a></li>
+	</ul>
 </div>
