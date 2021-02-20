@@ -3,17 +3,15 @@
 	<br><br>
 	<h1 class="main">List of orders</h1>
 	<br><br>
-	<table>
+	<table class="table table-striped">
 		<tr>
+		<!-- TODO Properties are wrong names, fix-->
 			<th align="left" width="100">Id</th>
-			<th align="left" width="100">Description</th>
-			<th align="left" width="100">Category</th>
-			<th align="left" width="100">Artist</th>
-			<th align="left" width="100">QtyInStock</th>
-			<th align="left" width="100">BuyCost</th>
-			<th align="left" width="100">SalePrice</th>
-			<th align="left" width="100">Price Discounted</th>
-			<th align="left" width="100">Photo</th>
+			<th align="left" width="100">Order Date</th>
+			<th align="left" width="100">Shipped Date</th>
+			<th align="left" width="100">status</th>
+			<th align="left" width="100">comments</th>
+			<th align="left" width="100">customer number</th>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
@@ -24,26 +22,27 @@
 
 		<?php foreach ($orders as $order) { ?>
 			<tr>
-			<!-- TODO Properties are wrong names, fix-->
+			
 				<td><?php echo $order->Id; ?></td>
-				<td><?php echo $order->Description; ?></td>
-				<td><?php echo $order->Category; ?></td>
-				<td><?php echo $order->Artist; ?></td>
-				<td><?php echo $order->StockQuantity; ?></td>
-				<td><?php echo $order->BuyCost; ?></td>
-				<td><?php echo $order->SalePrice; ?></td>
-				<td><?php echo $order->PriceDiscounted; ?></td>
-				<td><img src="<?php echo base_url() . "assets/images/orders/" . 'thumbs/' . $order->Photo; ?>"></td>
-				<td><?php echo anchor('orders/viewproduct/' . $order->Id, 'View'); ?></td>
-				<td><?php echo anchor('orders/editproduct/' . $order->Id, 'Update'); ?></td>
-				<td><?php echo anchor(
-						'orders/deleteproduct/' . $order->Id,
-						'Delete',
-						'onclick="return checkDelete()"'
-					); ?></td>
+				<td><?php echo $order->OrderDate; ?></td>
+				<td><?php echo $order->RequiredDate; ?></td>
+				<td><?php echo $order->ShippedDate; ?></td>
+				<td><?php echo $order->Status; ?></td>
+				<td><?php echo $order->Comments; ?></td>
+				<td><?php echo $order->CustomerNumber; ?></td>	
+				<td><?php echo anchor('orders/view/' . $order->Id, 'View', 'class="btn btn-primary"'); ?></td>
+				<td><?php echo anchor('orders/edit/' . $order->Id, 'Update', 'class="btn btn-success"'); ?></td>
+				<td><?php echo anchor('orders/deleteorder/' . $order->Id,'Delete','onclick="return checkDelete()" class="btn btn-danger"'); ?></td>
 			</tr>
 		<?php } ?>
 	</table>
-	<?php echo $this->pagination->create_links(); ?>
+	<!-- just a placeholder doesnt work-->
+	<ul class="pagination">
+		<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+		<li class="page-item"><a class="page-link" href="#">1</a></li>
+		<li class="page-item"><a class="page-link" href="#">2</a></li>
+		<li class="page-item"><a class="page-link" href="#">3</a></li>
+		<li class="page-item"><a class="page-link" href="#">Next</a></li>
+	</ul>
 	<br><br>
 </div>

@@ -42,7 +42,7 @@ class Orders extends CI_Controller
 			'order' => $order,
 			'orderItems' => $orderItems
 		);
-		$this->getMasterPage("OrderView", "Order:" . $order->Description, "Order:" . $order->Description, $data);
+		$this->getMasterPage("OrderView", "Order:" . $order->Id, "Order:" . $order->Id, $data);
 	}
 
 	private function getMasterPage($pageName, $pageTitle, $mainHeading, $pageVars = null)

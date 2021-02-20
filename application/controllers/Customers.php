@@ -8,6 +8,7 @@ class Customers extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url_helper');
+		$this->load->library("session");
         $this->load->model('CustomerService');
     }
     public function index()
@@ -22,7 +23,8 @@ class Customers extends CI_Controller
             'pageTitle' => "Customers",
             'mainContent' => $this->load->view("CustomersView", $data, true),
             'mainHeading' => "Customers",
-			'loggedIn' => $this->session->userdata["UserAccountId"] !== null
+			'loggedIn' => $this->session->userdata["UserAccountId"] !== null,
+            "username" => "",//TODO get username of logged in user
         );
 
 

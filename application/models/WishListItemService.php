@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class WishListItemService extends CI_Model
 {
-	private $table = "productwishlistitem";
+	private $table = "wishlistitem";
 
 	function __construct()
 	{
@@ -30,7 +30,6 @@ class WishListItemService extends CI_Model
 	{
 		$this->db->where('CustomerNumber', $customerNumber); 
 		$this->db->where('ProductId', $productId);
-        $this->db->join("dfhdfh", "", "");
 		return $this->db->delete($this->table);
 	}
     function getProductsInWishListByCustomer($customerNumber)

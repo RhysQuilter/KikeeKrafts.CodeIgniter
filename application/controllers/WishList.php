@@ -12,8 +12,16 @@ class WishList extends CI_Controller
         $this->load->library('cart');
         $this->load->library('form_validation');
         $this->load->model('WishListItemService');
+        $this->load->model('ProductService');
+
     }
 
+    public function remove($productId)
+    {
+        $customerNumber = $this->session->userdata["UserAccountId"];
+        $this->WishListItemService->deleteWishListItemByKey($customerNumber, $productId);
+        return $this->index();
+    }
     public function index()
     {
         $customerNumber = $this->session->userdata["UserAccountId"];
@@ -25,51 +33,53 @@ class WishList extends CI_Controller
     }
 
 
-	private function getMasterPage($pageName, $pageTitle, $mainHeading, $pageVars = null)
-	{
-		$vars = array(
-			'pageTitle' => $pageTitle,
-			'mainContent' => $this->load->view($pageName, $pageVars, true),
-			'mainHeading' => $mainHeading,
-			"username" => $this->getSessionUsername(),
-			'loggedIn' => $this->isLoggedIn()
-		);
-
-
-		$this->load->view("index", $vars);
-	}
-	private function getSessionUsername()
-	{
-		if (isset($this->session->userdata["Username"]))
-			return $this->session->userdata["Username"];
-		else return "";
-	}
-	private function isLoggedIn()
-	{
-		if (isset($this->session->userdata["UserAccountId"]))
-			return true;
-		else return false;
-	}
-    public function addProductToCart($productId)
+    private function getMasterPage($pageName, $pageTitle, $mainHeading, $pageVars = null)
     {
-        $this->load->library('cart');
-        $cartItem = $this->getCartItemFromProductId($productId);
-        $this->cart->insert($cartItem);
-        $this->getMasterPage("CartView", "Cart", "Cart");
+        $vars = array(
+            'pageTitle' => $pageTitle,
+            'mainContent' => $this->load->view($pageName, $pageVars, true),
+            'mainHeading' => $mainHeading,
+            "username" => $this->getSessionUsername(),
+            'loggedIn' => $this->isLoggedIn()
+        );
+
+
+        $this->load->view("index", $vars);
     }
-    private function getCartItemFromProductId($productId)
+    private function getSessionUsername()
+    {
+        if (isset($this->session->userdata["Username"]))
+            return $this->session->userdata["Username"];
+        else return "";
+    }
+
+    private function getSessionCustomerNumber()
+    {
+        if (isset($this->session->userdata["UserAccountId"]))
+            return $this->session->userdata["UserAccountId"];
+        else return "";
+    }
+
+    private function isLoggedIn()
+    {
+        if (isset($this->session->userdata["UserAccountId"]))
+            return true;
+        else return false;
+    }
+    public function addProductToWishlist($productId)
     {
         $product  = $this->ProductService->getProductById($productId);
-        return $this->createCartItem($product->Id, 1, $product->SalePrice, $product->Description);
-    }
-    private function createCartItem($id, $quantity, $price, $name, $options = NULL)
-    {
-        return array(
-            'id'      => $id,
-            'qty'     => $quantity,
-            'price'   => $price,
-            'name'    => $name,
-            'options' => $options
-        );
+        if ($product != NULL) {
+            $wishListItemValuesArray = array(
+                'CustomerNumber' => $this->getSessionCustomerNumber(),
+                'ProductId' => $product->Id
+            );
+
+            $this->WishListItemService->addWishListItem($wishListItemValuesArray);
+
+           $this->index();
+        } else {
+            //TODO Handle Error
+        }
     }
 }
