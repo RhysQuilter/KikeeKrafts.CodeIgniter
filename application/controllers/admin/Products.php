@@ -24,28 +24,28 @@ class Products extends CI_Controller
 	public function index()
 	{
 		$paginationConfig = array(
-			'base_url' => site_url('Products/index/'),
+			'base_url' => site_url('admin/Products/index/'),
 			'total_rows' => $this->ProductService->getProductCount(),
 			'per_page' => 2
 		);
 		$this->pagination->initialize($paginationConfig);
 		$data['products'] = $this->ProductService->getProductRange(5, $this->uri->segment(3));
 
-		$this->getMasterPage("productListView", "Products", "Products", $data);
+		$this->getMasterPage("admin/ProductListView", "Products", "Products", $data);
 	}
 
 	public function editproduct($Id)
 	{
 		$product = $this->ProductService->getProductById($Id);
 		$data = array('product' => $product);
-		$this->getMasterPage("ProductUpdateView", "Product:". $product->Description, "Product:" . $product->Description, $data);
+		$this->getMasterPage("admin/ProductUpdateView", "Product:". $product->Description, "Product:" . $product->Description, $data);
 	}
 
 	public function viewproduct($Id)
 	{
 		$product = $this->ProductService->getProductById($Id);
 		$data = array('product' => $product);
-		$this->getMasterPage("ProductView", "Product:". $product->Description, "Product:" . $product->Description, $data);
+		$this->getMasterPage("admin/ProductView", "Product:". $product->Description, "Product:" . $product->Description, $data);
 	}
 
 	public function deleteproduct($Id)

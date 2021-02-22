@@ -1,6 +1,6 @@
 <?php echo form_open('path/to/controller/update/method'); ?>
 
-<table  align ="center">
+<table class= " table table-striped">
 
 <tr>
         <th>QTY</th>
@@ -43,8 +43,8 @@
 
 <tr>
         <td colspan="2"> </td>
-        <td class="right"><strong>Total</strong></td>
-        <td class="right">$<?php echo $this->cart->format_number($this->cart->total()); ?></td>
+        <td ><strong>Total</strong></td>
+        <td >$<?php echo $this->cart->format_number($this->cart->total()); ?></td>
 </tr>
 
 </table>

@@ -1,7 +1,7 @@
 <?php $this->load->helper("url"); ?>
 <div class="list">
 	<br><br>
-	<h1 class="main">List of products</h1>
+	<h1 class="main"> products Administration</h1>
 	<br><br>
 	<table class="table table-striped">
 		<tr>
@@ -37,8 +37,8 @@
 				<td><?php echo anchor('products/viewproduct/' . $product->Id, 'View', 'class="btn btn-primary"'); ?></td>
 				<td><?php echo anchor('shoppingcart/addProductToCart/' . $product->Id, 'Add to Cart', 'class="btn btn-success"'); ?></td>
 				<td><?php echo anchor('wishlist/addProductTowishlist/' . $product->Id, 'Add to WishList', 'class="btn btn-warning"'); ?></td>
-				<td><?php //echo anchor('products/editproduct/' . $product->Id, 'Update', 'class="btn btn-primary"'); ?></td>
-				<td><?php //echo anchor('products/deleteproduct/' . $product->Id, 'Delete', 'onclick="return checkDelete()" class="btn btn-danger"'); ?></td>
+				<td><?php echo anchor('products/editproduct/' . $product->Id, 'Update', 'class="btn btn-primary"'); ?></td>
+				<td><?php echo anchor('products/deleteproduct/' . $product->Id, 'Delete', 'onclick="return checkDelete()" class="btn btn-danger"'); ?></td>
 			</tr>
 		<?php } ?>
 	</table>

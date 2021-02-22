@@ -55,4 +55,16 @@ class CustomerService extends CI_Model
 
         return $query->row();
     }
+
+    public function getAdminByCredentials($email, $password)
+    {
+        $parameters =  array(
+            'email' => $email,
+            'password' => hash("ripemd160", $password),
+            'IsAdmin' => 1
+        );
+        $query = $this->db->get_where($this->table, $parameters);
+
+        return $query->row();
+    }
 }

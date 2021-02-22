@@ -1,7 +1,7 @@
 <?php $this->load->helper("url"); ?>
 <div class="list">
 	<br><br>
-	<h1 class="main">List of orders</h1>
+	<h1 class="main">Orders Administration</h1>
 	<br><br>
 	<table class="table table-striped">
 		<tr>
@@ -31,12 +31,12 @@
 				<td><?php echo $order->Comments; ?></td>
 				<td><?php echo $order->CustomerNumber; ?></td>	
 				<td><?php echo anchor('orders/view/' . $order->Id, 'View', 'class="btn btn-primary"'); ?></td>
-				<td><?php //echo anchor('orders/edit/' . $order->Id, 'Update', 'class="btn btn-success"'); ?></td>
-				<td><?php //echo anchor('orders/deleteorder/' . $order->Id,'Delete','onclick="return checkDelete()" class="btn btn-danger"'); ?></td>
+				<td><?php echo anchor('orders/edit/' . $order->Id, 'Update', 'class="btn btn-success"'); ?></td>
+				<td><?php echo anchor('orders/deleteorder/' . $order->Id,'Delete','onclick="return checkDelete()" class="btn btn-danger"'); ?></td>
 			</tr>
 		<?php } ?>
 	</table>
-	<!-- just a placeholder doesnt work-->
+	
 	<ul class="pagination">
 		<li class="page-item"><a class="page-link" href="#">Previous</a></li>
 		<li class="page-item"><a class="page-link" href="#">1</a></li>

@@ -46,6 +46,14 @@ class OrderService extends CI_Model
         $query = $this->db->get();
         return $query->result()[0];
     }
+    public function getOrdersByCustomerNumber($CustomerNumber)
+    {
+        $this->db->from($this->tableName);
+        $this->db->where('CustomerNumber', $CustomerNumber);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     function deleteOrderById($orderId)
     {

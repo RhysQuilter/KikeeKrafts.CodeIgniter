@@ -18,8 +18,10 @@ $img_base = base_url() . "assets/images/";
 <body>
   <header>
     <h1><a href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/images/site/logo.png" alt="logo" style="width:100px;height:100px;"></a>Kilkee Krafts</h1>
+    <div style="float: right;"><a href="<?php echo site_url("adminlogin/"); ?>"><img width="100px" height="40px" src="<?php echo base_url() ;?>assets/images/site/transparentpixel.png" alt="Admin Login" /></a></div>
   </header>
-  <!-- TODO Display usename-->
+
+  
   <?php if (isset($loggedIn) && $loggedIn == true) {  ?>
     <div>Logged in as: <?php echo $username?></div>
   <?php } ?>
@@ -44,6 +46,10 @@ $img_base = base_url() . "assets/images/";
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('shoppingcart/'); ?>">Cart</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('customers/'); ?>">Customer</a>
+          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('wishlist/'); ?>">Wishlist</a>
           </li>
@@ -71,7 +77,7 @@ $img_base = base_url() . "assets/images/";
     <?php echo $mainContent; ?>
   </main>
   <footer>
-    Copyright: Rhys quilter
+    Copyright: Rhys Quilter
   </footer>
 </body>
 

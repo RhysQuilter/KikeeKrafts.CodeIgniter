@@ -19,20 +19,19 @@ class Orders extends CI_Controller
 		$this->load->library('pagination');
 		$this->load->model('OrderService');
 		$this->load->model('OrderItemService');
-		$this->load->library('session');
 	}
 
 	public function index()
 	{
 		$paginationConfig = array(
-			'base_url' => site_url('Orders/index/'),
+			'base_url' => site_url('admin/Orders/index/'),
 			'total_rows' => $this->OrderService->getOrderCount(),
 			'per_page' => 2
 		);
 		$this->pagination->initialize($paginationConfig);
-		$data['orders'] = $this->OrderService->getOrdersByCustomerNumber($this->session->userdata["UserAccountId"]);
+		$data['orders'] = $this->OrderService->getOrderRange(2, $this->uri->segment(3));
 
-		$this->getMasterPage("OrderListView", "Orders", "Order", $data);
+		$this->getMasterPage("admin/OrderListView", "Orders", "Order", $data);
 	}
 
 	public function view($orderId)
@@ -43,7 +42,7 @@ class Orders extends CI_Controller
 			'order' => $order,
 			'orderItems' => $orderItems
 		);
-		$this->getMasterPage("OrderView", "Order:" . $order->Id, "Order:" . $order->Id, $data);
+		$this->getMasterPage("admin/OrderView", "Order:" . $order->Id, "Order:" . $order->Id, $data);
 	}
 
 	private function getMasterPage($pageName, $pageTitle, $mainHeading, $pageVars = null)
